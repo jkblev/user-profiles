@@ -35,6 +35,10 @@ func main() {
 // the slice of UserResponses and serializes them into JSON
 func getUsers(context *gin.Context) {
 	convertedUsers := users.GetUsers()
+
+	// IndentedJSON used here for development purposes and easier reading.
+	// In a real environment, should use c.JSON() instead, which is less
+	// CUP and bandwidth-consuming
 	context.IndentedJSON(http.StatusOK, convertedUsers)
 	return
 }
@@ -58,6 +62,9 @@ func postUsers(c *gin.Context) {
 	}
 
 	addedUsers := users.AddUsers(newUsers)
+	// IndentedJSON used here for development purposes and easier reading.
+	// In a real environment, should use c.JSON() instead, which is less
+	// CUP and bandwidth-consuming
 	c.IndentedJSON(http.StatusCreated, addedUsers)
 }
 
