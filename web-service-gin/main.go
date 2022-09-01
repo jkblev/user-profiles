@@ -19,7 +19,10 @@ func main() {
 	router.POST("/users", postUsers)
 	router.POST("/image", postImage)
 
-	err := router.Run("localhost:8080")
+	// Note: we are not using "localhost:8080" as the server address
+	// because we want to be able to run this in a Docker container.
+	// We are also using 3000 instead of 8080 because 8080 is already allocated
+	err := router.Run(":3000")
 	if err != nil {
 		panic(err)
 	}

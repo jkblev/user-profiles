@@ -49,6 +49,10 @@ curl -X POST http://localhost:8080/image \
 4. You should have received a resized PNG and piped it to result.png!
 
 # Development Notes
+# How to build and run docker container
+1. From `/user-profiles`, run `docker build --tag web-service-gin .` to build the docker container
+2. To start the server from the container, run `docker run --publish 3000:3000 web-service-gin`. You should see "Listening and serving HTTP on :3000"
+
 ## Running SQL
 1. From commandline, run `mysql -u root -p` to start mysql
 2. Create a database by running `create database userprofiles`
