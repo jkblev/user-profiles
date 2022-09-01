@@ -53,7 +53,7 @@ func postUsers(c *gin.Context) {
 
 	err = json.Unmarshal(body, &newUsers)
 	if err != nil {
-		c.AbortWithError(400, nil)
+		c.AbortWithError(400, err)
 		return
 	}
 
