@@ -1,0 +1,9 @@
+go 1.19
+
+use ./web-service-gin
+
+use ./datetime-utils
+
+use ./image-utils
+
+use ./users
