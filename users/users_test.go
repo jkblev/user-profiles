@@ -28,6 +28,8 @@ func TestConvertUserRequestsToUserResponses(t *testing.T) {
 	}
 }
 
+// TestGetUsersEmpty verifies that we return an empty slice if no data
+// has been added to the global users slice yet
 func TestGetUsersEmpty(t *testing.T) {
 	received := GetUsers()
 	if len(received) > 0 {
@@ -35,6 +37,8 @@ func TestGetUsersEmpty(t *testing.T) {
 	}
 }
 
+// GetGetUsersSeeded verifies that we return the expected global
+// users slice when it is seeded with preexisting data.
 func TestGetUsersSeeded(t *testing.T) {
 	// Seed users with an existing user to find
 	existingUser := UserRequest{
@@ -50,6 +54,10 @@ func TestGetUsersSeeded(t *testing.T) {
 	}
 }
 
+// TestAddUsers verifies that adding a new UserRequest to users (that has a
+// pre-existing UserRequest already in it) will translate the new user to
+// a UserResponse and only return the new user instead of all users in the
+// slice.
 func TestAddUsers(t *testing.T) {
 	// Setup - add a test user that's already present in the users slice
 	// so that we can verify the response does not include the preexisting

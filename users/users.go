@@ -20,9 +20,12 @@ type UserResponse struct {
 	CreatedDateEST string `json:"created_date_est"`
 }
 
-// users slice to seed user data.
+// users slice to seed user data globally.
 var users []UserRequest
 
+
+// ConvertUserRequestsToUserResponses accepts a slice of UserRequest structs and returns
+// a translated slice of UserResponse structs.
 func ConvertUserRequestsToUserResponses(userRequests []UserRequest) []UserResponse {
 	var convertedUsers []UserResponse
 	for _, userRequest := range userRequests {
@@ -37,11 +40,15 @@ func ConvertUserRequestsToUserResponses(userRequests []UserRequest) []UserRespon
 	return convertedUsers
 }
 
-// GetUsers responds with the list of all users as JSON.
+// GetUsers responds with the slice of all users translated to
+// UserResponse structs.
 func GetUsers() []UserResponse {
 	return ConvertUserRequestsToUserResponses(users)
 }
 
+// AddUsers accepts a list of UserRequest structs and updates the global
+// users slice with the new users sent in the list of UserRequests. Will only
+// return the set of new users as a list of UserResponse structs.
 func AddUsers(newUsers []UserRequest) []UserResponse {
 	// Add the new users to the slice.
 	users = append(users, newUsers...)

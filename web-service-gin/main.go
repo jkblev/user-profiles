@@ -12,6 +12,9 @@ import (
 	"user-profiles/users"
 )
 
+// main initializes the Gin router and associates the different
+// GET and POST HTTP methods and paths with handler functions. It then
+// attaches the router to an HTTP server and starts it at :3000.
 func main() {
 
 	router := gin.Default()

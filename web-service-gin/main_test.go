@@ -11,11 +11,15 @@ import (
 	"user-profiles/users"
 )
 
+// SetUpRouter is a helper function for the below tests
 func SetUpRouter() *gin.Engine {
 	router := gin.Default()
 	return router
 }
 
+// TestGetUsersEmpty is a smoke test around GET /users
+// and verifies that we receive an empty JSON list when there
+// are no users present yet
 func TestGetUsersEmpty(t *testing.T) {
 	router := SetUpRouter()
 	router.GET("/users", getUsers)
@@ -31,6 +35,8 @@ func TestGetUsersEmpty(t *testing.T) {
 	assert.Empty(t, users)
 }
 
+// TestPostUsers verifies that we can submit a list of JSON users
+// and receive a JSON list back in a different format.
 func TestPostUsers(t *testing.T) {
 	router := SetUpRouter()
 	router.POST("/users", postUsers)
